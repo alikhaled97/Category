@@ -112,7 +112,7 @@ chmod 644 .ssh/authorized_keys
 4. Move inside this directory type:
 `cd FlaskApp`
 5. Clone the Catalog App to the virtual machine by typing:
-`git clone https://github.com/alikhaled97/Catalog.git`
+`git clone https://github.com/alikhaled97/FlaskApp.git`
 6. Rename `catalog.py` to `__init__.py` type:
 `sudo mv catalog.py __init__.py`
 7. Edit `database_setup.py`, `catalog.py` and `someofcategories.py` by changing `engine = create_engine('sqlite:///catalog.db')` to `engine = create_engine('postgresql://catalog:password@localhost/catalog')`
