@@ -175,6 +175,7 @@ chmod 644 .ssh/authorized_keys
 	```
     
 ## Installed softwares
+```
 apt-get -qqy install postgresql python-psycopg2
 apt-get -qqy install python-flask python-sqlalchemy
 apt-get -qqy install python-pip
@@ -184,6 +185,7 @@ pip install requests
 pip install httplib2
 pip install redis
 pip install passlib
+```
 
 
 ## Restart Apache
