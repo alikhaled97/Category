@@ -6,15 +6,19 @@ In this project, i will take a baseline installation of a Linux server and prepa
 ## 1. Instructions for SSH to access the instance
 1. Download the private key from (Account--> SSH key)
 2. Move the private key file into the folder `~/.ssh` (you will find it in your home directory). You can just type the following command in your terminal:
-	```mv ~/Downloads/udacity_key.rsa ~/.ssh/```
+	```mv ~/Downloads/myy_key.pem ~/.ssh/```
 Note: Downloads refers to the directory that the private key file downloaded in.
 3. Open your terminal and type :
-	```chmod 600 ~/.ssh/udacity_key.rsa```
+	```chmod 600 ~/.ssh/my_key.pem```
 4. Type in your terminal to access ubunto server
-	```ssh -i ~/.ssh/udacity_key.rsa root@52.59.188.225```
+	```ssh -i ~/.ssh/my_key.pem ubuntu@35.159.20.219```
 5. Information
 
-	Public IP Address (52.59.188.225)
+	Public IP Address (35.159.20.219)
+    
+    Accessible SSH port: 2200
+    
+    The complete URL: http://ec2-35-159-20-219.eu-central-1.compute.amazonaws.com/
   
 ## 2. Update all currently installed packages
 1. To check for updates type in terminal:
@@ -41,11 +45,12 @@ Configure the Uncomplicated Firewall (UFW) to only allow incoming connections fo
 4. ```sudo ufw enable```
 ## 5. Create a new user account named grader
 1. ```sudu adduser grader```
+   ```finger grader```
 then type your password and full name
 
 ## 6. Give grader the permission to sudo.
 1. `touch /etc/sudoers.d/grader`
-2. `sudo vim /etc/sudoers.d/grader`, type `grader ALL=(ALL:ALL) ALL`, save and exit by typing `Esc` + `:` + `x!` and press `enter`
+2. `sudo sudo /etc/sudoers.d/grader`, type `grader ALL=(ALL:ALL) ALL`, save and exit by typing `Ctrl + x` + `y` + and press `enter`
 
 ## 7. Create an SSH key pair for grader
 1. Generate keys on local machine using`ssh-keygen` , then save the private key in `~/.ssh` on your local machine
@@ -57,8 +62,8 @@ touch .ssh/authorized_keys
 ```
 3. On your local machine type:
 ```
-cat .ssh/linuxcourse.pub
-#Then copy the key
+cat .ssh/id_rsa.pub
+Then copy the key
 ```
 
 4. Go back to your virtual machine and type:
@@ -78,7 +83,7 @@ chmod 644 .ssh/authorized_keys
 
 ## 10. Install and configure PostgreSQL
 1. Install PostgreSQL `sudo apt-get install postgresql`
-2. Login as user "postgres" `sudo su  postgres`
+2. Login as user "postgres" `sudo su postgres`
 3. Open postgreSQL shell `psql`
 4. Create a new database named catalog  and create a new user named catalog in postgreSQL shell
 	
@@ -168,6 +173,18 @@ chmod 644 .ssh/authorized_keys
 	from FlaskApp import app as application
 	application.secret_key = 'Add your secret key'
 	```
+    
+## Installed softwares
+apt-get -qqy install postgresql python-psycopg2
+apt-get -qqy install python-flask python-sqlalchemy
+apt-get -qqy install python-pip
+pip install bleach
+pip install oauth2client
+pip install requests
+pip install httplib2
+pip install redis
+pip install passlib
+
 
 ## Restart Apache
 `sudo service apache2 restart `
@@ -182,4 +199,7 @@ chmod 644 .ssh/authorized_keys
 
 ## References:
 https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+http://www.hcidata.info/host2ip.cgi
+https://askubuntu.com/questions/138423/how-do-i-change-my-timezone-to-utc-gmt/138442
+https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps
 
