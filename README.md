@@ -58,8 +58,9 @@ touch .ssh/authorized_keys
 3. On your local machine type:
 ```
 cat .ssh/linuxcourse.pub
+#Then copy the key
 ```
-Then copy the key
+
 4. Go back to your virtual machine and type:
 `nano .ssh/authorized_keys`
 Then past the key and save,
